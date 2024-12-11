@@ -121,16 +121,15 @@ plugins:
   - tag: forward_local
     type: forward
     args:
-      concurrent: 4
+      concurrent: 3
       upstreams:
-        - addr: 10.10.10.10
-        - addr: tcp://10.10.10.10
-        #- addr: dc00::8888
-        #- addr: tcp://dc00::8888
-          enable_pipeline: false
-          insecure_skip_verify: false
-          idle_timeout: 50
-          enable_http3: false
+        - addr: "https://dns.alidns.com/dns-query"
+          dial_addr: "223.5.5.5"
+          insecure_skip_verify: true
+          enable_http3:
+        - addr: "quic://223.5.5.5"
+        - addr: "tcp://223.5.5.5"
+
 
   - tag: forward_remote
     type: forward
